@@ -43,7 +43,7 @@ namespace WebApplication1
 
             const string jwtSchemeName = "JwtBearer";
             var signingDecodingKey = (IJwtSigningDecodingKey)signingKey;
-            IJwtEncryptingDecodingKey encryptingDecodingKey = (IJwtEncryptingDecodingKey)encryptionEncodingKey;
+            
 
             services
                 .AddAuthentication(options => {
@@ -55,7 +55,7 @@ namespace WebApplication1
                     {
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = signingDecodingKey.GetKey(),
-                        TokenDecryptionKey = encryptingDecodingKey.GetKey(),
+                        TokenDecryptionKey = encryptionEncodingKey.GetKey(),
 
                         ValidateIssuer = true,
                         ValidIssuer = "DemoApp",
